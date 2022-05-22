@@ -17,3 +17,9 @@ RUN bash ./installSQLtools.sh \
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+
+# Add Deno to the image
+RUN curl -fsSL https://deno.land/x/install/install.sh | sh \
+    && echo "\n" >> ~/.bashrc \
+    && echo "export DENO_INSTALL='/root/.deno'" >> ~/.bashrc \
+    && echo "export PATH='$DENO_INSTALL/bin:$PATH'" >> ~/.bashrc
